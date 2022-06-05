@@ -30,8 +30,8 @@ $ npm run start:prod
 http://localhost:3000/titlemost25
 
 # 10 most occurring words in the titles of the post of exactly the last week
-http://localhost:3000/topusers
+http://localhost:3000/toplastweek
 
-# test coverage
-$ npm run test:cov
+# 10 most occurring words in titles of the last 600 stories of users with at least
+http://localhost:3000/topusers
 ```
