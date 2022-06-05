@@ -30,6 +30,8 @@
 
 ```bash
 $ npm install
+$ npm i -g @nestjs/cli
+$ npm i --save @nestjs/axios
 ```
 
 ## Running the app
@@ -45,14 +47,14 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## The end points
 
 ```bash
-# unit tests
-$ npm run test
+# 10 most occurring words in the titles of the last 25 stories
+http://localhost:3000/titlemost25
 
-# e2e tests
-$ npm run test:e2e
+# 10 most occurring words in the titles of the post of exactly the last week
+http://localhost:3000/topusers
 
 # test coverage
 $ npm run test:cov
