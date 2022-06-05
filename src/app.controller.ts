@@ -101,5 +101,36 @@ export class AppController {
       console.log(finalResults);
       return finalResults;
     }
+    else if (params.param == 'toplastweek') {
+      params.HNLINK = 'newstories.json?print=pretty';
+      await this.appService.getData(params).then(function (this, results) {
+        mostUsers.push(results);
+      });
+
+      const timeNow = new Date();
+      const lastWeek = new Date(
+        timeNow.getFullYear(),
+        timeNow.getMonth(),
+        timeNow.getDate() - 7,
+      );
+      console.log(lastWeek.toDateString());
+      for (let i = 0; i <= 25; i++) {
+        params.HNLINK = 'item/' + mostUsers[0][i] + '.json?print=pretty';
+        await this.appService.getData(params).then(function (this, results) {
+          const timeStamp = new Date(results.time * 1000);
+          if (lastWeek.toDateString() !== timeStamp.toDateString()) {
+            mostTitles += results.title + ' ';
+          }
+        });
+      }
+
+      mostTitles.toLowerCase();
+      mostTitles.replace(/[^0-9a-z ]/g, '');
+      const finalResults = this.sortCounter(mostTitles);
+
+      console.log(finalResults);
+      return finalResults;
+
+    }
   }
 }
